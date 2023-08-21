@@ -62,7 +62,7 @@ function Home() {
             justifyContent: "center",
           }}
         >
-          Getting Started <HelpIcon />
+          帮助 <HelpIcon />
         </Button>
         <Button m={2} onClick={() => setIsStartModalOpen(true)}>
           Start Game

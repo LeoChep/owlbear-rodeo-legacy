@@ -42,6 +42,10 @@ type TokenBarProps = {
 function TokenBar({ onMapTokensStateCreate }: TokenBarProps) {
   const userId = useUserId();
   const { tokensById, tokenGroups } = useTokenData();
+  const [ searchBy,setSearchBy] =useState("")
+  const inputSearch=function(e:any){
+    setSearchBy(e.target.value)
+  }
   const [fullScreen] = useSetting<boolean>("map.fullScreen");
 
   const [dragId, setDragId] = useState<string | null>(null);
@@ -119,7 +123,7 @@ function TokenBar({ onMapTokensStateCreate }: TokenBarProps) {
   function renderToken(group: Group, draggable = true) {
     if (group.type === "item") {
       const token = tokensById[group.id];
-      if (token && !token.hideInSidebar) {
+      if (token && !token.hideInSidebar&&token.name.includes(searchBy)) {
         if (draggable) {
           return (
             <Draggable id={token.id} key={token.id}>
@@ -134,7 +138,7 @@ function TokenBar({ onMapTokensStateCreate }: TokenBarProps) {
       const groupTokens = [];
       for (let item of group.items) {
         const token = tokensById[item.id];
-        if (token && !token.hideInSidebar) {
+        if (token && !token.hideInSidebar&&(token.name.includes(searchBy)||group.name.includes(searchBy))) {
           groupTokens.push(token);
         }
       }
@@ -161,6 +165,7 @@ function TokenBar({ onMapTokensStateCreate }: TokenBarProps) {
       autoScroll={false}
       sensors={sensors}
     >
+     
       <Box
         sx={{
           height: "100%",
@@ -178,6 +183,16 @@ function TokenBar({ onMapTokensStateCreate }: TokenBarProps) {
             padding: "0 16px",
           }}
         >
+           <Grid
+            columns="1fr"
+            gap={2}
+            py={2}
+            // Prevent selection on 3D touch for iOS
+            onTouchStart={preventSelect}
+            onTouchEnd={resumeSelect}
+          >
+             <input value={searchBy} onChange={inputSearch}></input>
+          </Grid>
           <Grid
             columns="1fr"
             gap={2}
