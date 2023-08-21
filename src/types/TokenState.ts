@@ -1,6 +1,6 @@
 import { Color } from "../helpers/colors";
 import { Outline } from "./Outline";
-import { TokenCategory } from "./Token";
+import { Token, TokenCategory } from "./Token";
 
 export type BaseTokenState = {
   id: string;
@@ -32,6 +32,6 @@ export type FileTokenState = BaseTokenState & {
   file: string;
 };
 
-export type TokenState = DefaultTokenState | FileTokenState;
+export type TokenState = (DefaultTokenState | FileTokenState) &{token:Token};
 
 export type TokenStates = Record<string, TokenState>;

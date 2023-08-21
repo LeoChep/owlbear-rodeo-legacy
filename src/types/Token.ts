@@ -29,7 +29,7 @@ export type FileToken = BaseToken & {
   thumbnail: string;
 };
 
-export type Token = DefaultToken | FileToken;
+export type Token = (DefaultToken | FileToken) & any ;
 
 export type TokenMenuOptions = {
   tokenStateId: string;

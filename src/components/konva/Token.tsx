@@ -37,6 +37,7 @@ import {
 import Transformer from "./Transformer";
 import TokenAttachment from "./TokenAttachment";
 import { MapState } from "../../types/MapState";
+import TokenHPLabel from "./TokenHPLabel";
 
 type MapTokenProps = {
   tokenState: TokenState;
@@ -73,6 +74,23 @@ function Token({
   mapState,
   selected,
 }: MapTokenProps) {
+  console.log({maptoeknprops:{
+    tokenState,
+    onTokenStateChange,
+    onTokenMenuOpen,
+    onTokenMenuClose,
+    onTokenDragStart,
+    onTokenDragEnd,
+    onTokenTransformStart,
+    onTokenTransformEnd,
+    transforming,
+    draggable,
+    selectable,
+    fadeOnHover,
+    map,
+    mapState,
+    selected,
+  }})
   const userId = useUserId();
 
   const mapWidth = useMapWidth();
@@ -493,6 +511,14 @@ function Token({
                 height={tokenHeight}
               />
             ) : null}
+                  {tokenState.token.hp ? (
+              <TokenHPLabel
+                tokenState={tokenState}
+                width={tokenWidth}
+                height={tokenHeight}
+              />
+            ) : null}
+            
           </Group>
         ) : null}
       </animated.Group>

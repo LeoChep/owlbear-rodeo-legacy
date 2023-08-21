@@ -34,6 +34,16 @@ function TokenSettings({ token, onSettingsChange }: TokenSettingsProps) {
           my={1}
         />
       </Box>
+      <Box mt={2} sx={{ flexGrow: 1 }}>
+        <Label htmlFor="hp">hp</Label>
+        <Input
+          name="hp"
+          value={(token && token.hp) || ""}
+          onChange={(e) => onSettingsChange({ hp: e.target.value })}
+          disabled={tokenEmpty}
+          my={1}
+        />
+      </Box>
       <Box mt={2}>
         <Label>Default Category</Label>
         <Select

@@ -10,9 +10,12 @@ import { isEmpty } from "../helpers/shared";
 
 import useResponsiveLayout from "../hooks/useResponsiveLayout";
 
-import { Token } from "../types/Token";
+import { Token  }   from "../types/Token";
 
 import { UpdateTokenEventHandler } from "../contexts/TokenDataContext";
+
+
+
 
 type EditModalProps = {
   isOpen: boolean;
@@ -112,6 +115,7 @@ function EditTokenModal({
             token={selectedTokenWithChanges}
             onSettingsChange={handleTokenSettingsChange}
           />
+          
         </SimpleBar>
         <Button m={3} onClick={handleSave}>
           Save

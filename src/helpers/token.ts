@@ -16,7 +16,7 @@ export function createTokenState(
   position: Vector2,
   userId: string
 ): TokenState {
-  let tokenState: BaseTokenState = {
+  let tokenState: BaseTokenState&any = {
     id: uuid(),
     tokenId: token.id,
     owner: userId,
@@ -34,6 +34,7 @@ export function createTokenState(
     outline: token.outline,
     width: token.width,
     height: token.height,
+    token:token
   };
   if (token.type === "file") {
     return {
