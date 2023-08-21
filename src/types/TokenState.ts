@@ -32,6 +32,6 @@ export type FileTokenState = BaseTokenState & {
   file: string;
 };
 
-export type TokenState = (DefaultTokenState | FileTokenState) &{token:Token};
+export type TokenState = (DefaultTokenState | FileTokenState) & Partial<{token:Token}>;
 
 export type TokenStates = Record<string, TokenState>;
