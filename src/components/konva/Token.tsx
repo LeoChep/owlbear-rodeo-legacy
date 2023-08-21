@@ -511,7 +511,7 @@ function Token({
                 height={tokenHeight}
               />
             ) : null}
-                  {tokenState.token.hp ? (
+                  {(tokenState.token&&tokenState.token.hp) ? (
               <TokenHPLabel
                 tokenState={tokenState}
                 width={tokenWidth}
@@ -534,7 +534,7 @@ function Token({
         onTransformStart={handleTransformStart}
         gridScale={map.grid.measurement.scale}
       />
-    </>
+      </>
   );
 }
 
