@@ -11,6 +11,8 @@ services:
   frontend:
     build: 
       context: ./
+    volumes:
+      - ./src:/home/node/app/src:ro
     depends_on:
       - backend
     ports:
